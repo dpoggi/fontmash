@@ -1,9 +1,8 @@
 %h1 FontMash
 %form{:action => "/", :method => "GET"}
-  %p
+  %p#fields
     %label{:for => "font1"} First Font:
     %input{:type => "text", :name => "font1", :id => "font1"}
-  %p
     %label{:for => "font2"} Second Font:
     %input{:type => "text", :name => "font2", :id => "font2"}
   %p
@@ -13,8 +12,8 @@
            :value => "Mash!", 
            :onclick => "javascript:mashFonts();"}
              
-- (1..2).each do |time|
-  %div{:id => (time == 1) ? "first" : "second"}
+- (1..2).each do |i|
+  %div{:id => (i == 1) ? "first" : "second"}
     - [('A'..'Z'), ('a'..'z'), ('!'..'@')].each do |set|
       %p
         - set.each do |character|
