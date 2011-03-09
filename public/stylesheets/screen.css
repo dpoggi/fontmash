@@ -4,6 +4,7 @@ h1 { font-size: 100px; margin-bottom: 30px; }
 
 p#fields { margin-bottom: 10px; }
 
-#first, #second { font-size: x-large; }
+#text { display: table; margin: 0 auto; text-align: left; font-size: x-large; }
 #first { color: rgba(255, 0, 0, 0.6); margin-top: 36px; }
 #second { color: rgba(0, 0, 255, 0.6); }
+#text span { margin-right: 10px; }

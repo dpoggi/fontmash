@@ -12,9 +12,10 @@
            :value => "Mash!", 
            :onclick => "javascript:mashFonts();"}
              
-- (1..2).each do |i|
-  %div{:id => (i == 1) ? "first" : "second"}
-    - [('A'..'Z'), ('a'..'z'), ('!'..'@')].each do |set|
-      %p
-        - set.each do |character|
-          = character
+#text             
+  - (1..2).each do |i|
+    %div{:id => (i == 1) ? "first" : "second"}
+      - [('A'..'Z'), ('a'..'z'), ('!'..'@')].each do |set|
+        %p
+          - set.each do |character|
+            %span= character
