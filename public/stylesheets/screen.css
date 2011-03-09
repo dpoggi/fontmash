@@ -1,0 +1,7 @@
+body { font-family: Helvetica, Arial, sans-serif; }
+
+h1 { font-size: 100px; text-align: center; }
+
+#first, #second { font-size: x-large; }
+#first { color: rgba(255, 0, 0, 0.6); }
+#second { color: rgba(0, 0, 255, 0.6); }

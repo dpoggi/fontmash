@@ -5,8 +5,11 @@ class FontMash < Sinatra::Base
   enable :static
   set :public, 'public'
 
+  # Haml configuration
+  set :haml, {:format => :html5}
+
   get '/' do
-    erb :index
+    haml :index
   end
 
   not_found do
