@@ -10,5 +10,5 @@
     %script{:type => "text/javascript", :src => "/javascripts/fontmash.js"}
 
     %title FontMash!
-  %body
+  %body{:onload => "javascript:alignTables();"}
     = yield

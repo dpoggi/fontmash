@@ -11,11 +11,10 @@
            :id => "go", 
            :value => "Mash!", 
            :onclick => "javascript:mashFonts();"}
-             
-#text             
-  - (1..2).each do |i|
-    %div{:id => (i == 1) ? "first" : "second"}
-      - [('A'..'Z'), ('a'..'z'), ('!'..'@')].each do |set|
-        %p
-          - set.each do |character|
-            %span= character
+
+- (1..2).each do |i|
+  %table{:id => (i == 1) ? "first" : "second"}
+    - [('A'..'Z'), ('a'..'z'), ('!'..'@').reject{|c|('0'..'9').count(c) > 0}, ('0'..'9')].each do |set|
+      %tr
+        - set.each do |character|
+          %td>= character

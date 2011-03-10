@@ -4,7 +4,9 @@ h1 { font-size: 100px; margin-bottom: 30px; }
 
 p#fields { margin-bottom: 10px; }
 
-#text { display: table; margin: 0 auto; text-align: left; font-size: x-large; }
-#first { color: rgba(255, 0, 0, 0.6); margin-top: 36px; }
-#second { color: rgba(0, 0, 255, 0.6); }
-#text span { margin-right: 10px; }
+table { margin: 20px auto; font-size: 36px; }
+table#second { position: fixed; }
+table tr { height: 60px; }
+table#first tr { color: rgba(255, 0, 0, 0.6); }
+table#second tr { color: rgba(0, 0, 255, 0.6); }
+table td { min-width: 40px; }
