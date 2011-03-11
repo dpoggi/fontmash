@@ -12,7 +12,7 @@
     %title FontMash!
   %body
     %h1 FontMash
-    %form{:action => "/", :method => "GET"}
+    %form{:action => "/", :method => "get"}
       %p#fields
         %label{:for => "font1"} Red Font:
         %input{:type => "text", :name => "font1", :id => "font1", :value => "Helvetica"}
@@ -29,6 +29,12 @@
                :value => "Swap!"}
     = yield
 
+    %form{:action => "/", :method => "post"}
+      %p#text-input
+        %label{:for => "text-field"} Enter Your Own Text:
+        %input{:type => "text", :name => "text-field", :id => "text-field"}
+        %input{:type => "submit", :name => "submit", :id => "submit", :value => "Submit"}
+      
     :javascript
       $("body").ready(FontMash.alignTables);
       $(window).resize(FontMash.alignTables);

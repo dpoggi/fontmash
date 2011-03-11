@@ -23,7 +23,11 @@ class FontMash < Sinatra::Base
 
   # Handles custom text inputted by the user. Not done.
   post '/' do
-    @rows = [('0'..'9')]
+    user_text = params['text-field']
+    @rows = []
+    (0..user_text.length / 13).each do |i|
+      @rows << user_text[i * 13..(i * 13) + 12].split(//)
+    end
     haml :index
   end
 
