@@ -2,15 +2,18 @@
 %form{:action => "/", :method => "GET"}
   %p#fields
     %label{:for => "font1"} First Font:
-    %input{:type => "text", :name => "font1", :id => "font1"}
+    %input{:type => "text", :name => "font1", :id => "font1", :value => "Helvetica"}
     %label{:for => "font2"} Second Font:
-    %input{:type => "text", :name => "font2", :id => "font2"}
+    %input{:type => "text", :name => "font2", :id => "font2", :value => "Times"}
   %p
     %input{:type => "button", 
            :name => "go", 
            :id => "go", 
-           :value => "Mash!", 
-           :onclick => "javascript:mashFonts();"}
+           :value => "Mash!"} 
+    %input{:type => "button",
+           :name => "swap",
+           :id => "swap",
+           :value => "Swap!"}
 
 - (1..2).each do |i|
   %table{:id => (i == 1) ? "first" : "second"}

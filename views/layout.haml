@@ -10,5 +10,14 @@
     %script{:type => "text/javascript", :src => "/javascripts/fontmash.js"}
 
     %title FontMash!
-  %body{:onload => "javascript:alignTables();"}
+  %body
     = yield
+    :javascript
+      $("body").ready(FontMash.alignTables);
+      $(window).resize(FontMash.alignTables);
+      $(window).scroll(FontMash.alignTables);
+      $("input#go").click(FontMash.mashFonts);
+      $("input#swap").click(FontMash.swapFonts);
+
+      if (navigator.platform.indexOf("Mac") == -1)
+        FontMash.compatibility();
