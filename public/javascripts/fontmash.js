@@ -14,11 +14,9 @@ var FontMash = {
     var tmp = $("input#font1").val();
     $("input#font1").val($("input#font2").val());
     $("input#font2").val(tmp);
-    parent.mashFonts();
   },
   compatibility: function() {
     $("input#font1").val("Arial");
     $("input#font2").val("Times New Roman");
-    parent.mashFonts();
   }
 };

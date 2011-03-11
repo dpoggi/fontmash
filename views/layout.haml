@@ -17,7 +17,12 @@
       $(window).resize(FontMash.alignTables);
       $(window).scroll(FontMash.alignTables);
       $("input#go").click(FontMash.mashFonts);
-      $("input#swap").click(FontMash.swapFonts);
+      $("input#swap").click(function() {
+        FontMash.swapFonts();
+        FontMash.mashFonts()
+      });
 
-      if (navigator.platform.indexOf("Mac") == -1)
+      if (navigator.platform.indexOf("Mac") == -1) {
         FontMash.compatibility();
+        FontMash.mashFonts();
+      }
