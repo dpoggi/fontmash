@@ -11,7 +11,24 @@
 
     %title FontMash!
   %body
+    %h1 FontMash
+    %form{:action => "/", :method => "GET"}
+      %p#fields
+        %label{:for => "font1"} Red Font:
+        %input{:type => "text", :name => "font1", :id => "font1", :value => "Helvetica"}
+        %label{:for => "font2"} Blue Font:
+        %input{:type => "text", :name => "font2", :id => "font2", :value => "Times"}
+      %p
+        %input{:type => "button", 
+               :name => "go", 
+               :id => "go", 
+               :value => "Mash!"} 
+        %input{:type => "button",
+               :name => "swap",
+               :id => "swap",
+               :value => "Swap!"}
     = yield
+
     :javascript
       $("body").ready(FontMash.alignTables);
       $(window).resize(FontMash.alignTables);

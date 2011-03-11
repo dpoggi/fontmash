@@ -1,23 +1,6 @@
-%h1 FontMash
-%form{:action => "/", :method => "GET"}
-  %p#fields
-    %label{:for => "font1"} Red Font:
-    %input{:type => "text", :name => "font1", :id => "font1", :value => "Helvetica"}
-    %label{:for => "font2"} Blue Font:
-    %input{:type => "text", :name => "font2", :id => "font2", :value => "Times"}
-  %p
-    %input{:type => "button", 
-           :name => "go", 
-           :id => "go", 
-           :value => "Mash!"} 
-    %input{:type => "button",
-           :name => "swap",
-           :id => "swap",
-           :value => "Swap!"}
-
-- (1..2).each do |i|
-  %table{:id => (i == 1) ? "first" : "second"}
-    - [('A'..'Z'), ('a'..'z'), ('!'..'@').reject{|c|('0'..'9').count(c) > 0}, ('0'..'9')].each do |set|
+- ["first", "second"].each do |num|
+  %table{:id => num}
+    - @rows.each do |row|
       %tr
-        - set.each do |character|
-          %td>= character
+        - row.each do |cell|
+          %td>= cell

@@ -1,15 +1,16 @@
+# Rackup file
+
 # Shotgun command-line switches
 #\ -s thin -o 0.0.0.0
 
-require 'rubygems'
+# Tell Bundler to require all our gems
 require 'bundler'
-Bundler.setup
+Bundler.require
 
-require 'sinatra'
-require 'haml'
-require 'rack/google-analytics'
-
-# configure { use Rack::GoogleAnalytics, :tracker => 'UA-21916923-1' }
+# Rack configuration
+#configure do
+  #use Rack::GoogleAnalytics, :tracker => ''
+#end
 
 require './fontmash.rb'
 run FontMash
