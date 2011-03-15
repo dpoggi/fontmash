@@ -11,7 +11,8 @@
 
     %title FontMash!
   %body
-    %h1 FontMash
+    %h1
+      %a{:href => "/"} FontMash
     %form{:action => "/", :method => "get"}
       %p#fields
         %label{:for => "font1"} Red Font:
@@ -38,12 +39,11 @@
     :javascript
       $("body").ready(FontMash.alignTables);
       $(window).resize(FontMash.alignTables);
-      $(window).scroll(FontMash.alignTables);
 
       $("input#go").click(FontMash.mashFonts);
       $("input#swap").click(function() {
         FontMash.swapFonts();
-        FontMash.mashFonts()
+        FontMash.mashFonts();
       });
 
       if (navigator.platform.indexOf("Mac") == -1) {
