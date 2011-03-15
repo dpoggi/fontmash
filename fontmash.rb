@@ -12,6 +12,18 @@ class FontMash < Sinatra::Base
     set :haml, {:format => :html5}
   end
 
+  # Helpers
+  helpers do
+    # Helper to pop an item off the front of an array
+    def pop_front(arr)
+      if arr.length > 0
+        ret = arr[0]
+        arr.delete_at 0
+        ret
+      end
+    end
+  end
+
   # Default view, shows the set of common ASCII characters
   get '/' do
     @rows = [('A'..'M'), ('N'..'Z'),
@@ -21,13 +33,11 @@ class FontMash < Sinatra::Base
     haml :index
   end
 
-  # Handles custom text inputted by the user. Not done.
+  # Handles custom text inputted by the user.
   post '/' do
-    user_text = params['text-field']
-    @rows = []
-    (0..user_text.length / 13).each do |i|
-      @rows << user_text[i * 13..(i * 13) + 12].split(//)
-    end
+    input_array = params['text-field'].split(//)
+    num_rows = input_array.length / 13 + 1
+    @rows = Array.new(num_rows) {Array.new(13) {pop_front input_array}} 
     haml :index
   end
 
