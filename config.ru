@@ -8,9 +8,11 @@ require 'bundler'
 Bundler.require
 
 # Rack configuration
-#configure do
-  #use Rack::GoogleAnalytics, :tracker => ''
-#end
+configure do
+  if ENV['RACK_ENV'] == 'production'
+    use Rack::GoogleAnalytics, :tracker => 'UA-22080872-1'
+  end
+end
 
 require './fontmash.rb'
 run FontMash
