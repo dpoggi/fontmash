@@ -1,3 +1,20 @@
+# I AM SO COOL I USE CORE-LEVEL MONKEY PATCHES MUAHAHAHAHAHA
+class Array
+  def pop_front
+    if length > 0
+      ret = at 0
+      delete_at 0
+      ret
+    end
+  end
+end
+
+class String
+  def is_space
+    self == ' '
+  end
+end
+
 # Controller/Routes
 class FontMash < Sinatra::Base
 
@@ -12,18 +29,6 @@ class FontMash < Sinatra::Base
     set :haml, {:format => :html5}
   end
 
-  # Helpers
-  helpers do
-    # Helper to pop an item off the front of an array
-    def pop_front(arr)
-      if arr.length > 0
-        ret = arr[0]
-        arr.delete_at 0
-        ret
-      end
-    end
-  end
-
   # Default view, shows the set of common ASCII characters
   get '/' do
     @rows = [('A'..'M'), ('N'..'Z'),
@@ -35,9 +40,9 @@ class FontMash < Sinatra::Base
 
   # Handles custom text inputted by the user.
   post '/' do
-    input_array = params['text-field'].split(//)
+    input_array = params['text-field'].split(//).reject(&:is_space)
     num_rows = input_array.length / 13 + 1
-    @rows = Array.new(num_rows) {Array.new(13) {pop_front input_array}} 
+    @rows = Array.new(num_rows) {Array.new(13) {input_array.pop_front}}
     haml :index
   end
 
