@@ -1,14 +1,4 @@
 # I AM SO COOL I USE CORE-LEVEL MONKEY PATCHES MUAHAHAHAHAHA
-class Array
-  def pop_front
-    if length > 0
-      ret = at 0
-      delete_at 0
-      ret
-    end
-  end
-end
-
 class String
   def is_space
     self == ' '
@@ -42,7 +32,7 @@ class FontMash < Sinatra::Base
   post '/' do
     input_array = params['text-field'].split(//).reject(&:is_space)
     num_rows = input_array.length / 13 + 1
-    @rows = Array.new(num_rows) {Array.new(13) {input_array.pop_front}}
+    @rows = Array.new(num_rows) {Array.new(13) {input_array.shift}}
     haml :index
   end
 
