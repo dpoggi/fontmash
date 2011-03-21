@@ -1,7 +1,7 @@
 # I AM SO COOL I USE CORE-LEVEL MONKEY PATCHES MUAHAHAHAHAHA
-class String
-  def is_space
-    self == ' '
+class ::String
+  def space?
+    self.split(//).reject {|chr| chr == ' '}.count == 0
   end
 end
 
@@ -30,7 +30,7 @@ class FontMash < Sinatra::Base
 
   # Handles custom text inputted by the user.
   post '/' do
-    input_array = params['text-field'].split(//).reject(&:is_space)
+    input_array = params['text-field'].split(//).reject(&:space?)
     num_rows = input_array.length / 13 + 1
     @rows = Array.new(num_rows) {Array.new(13) {input_array.shift}}
     haml :index
