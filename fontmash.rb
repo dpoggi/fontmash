@@ -41,7 +41,12 @@ class FontMash < Sinatra::Base
 
   # Get an SCSS stylesheet
   get '/stylesheets/:sheet.css' do
-    scss :"#{params[:sheet]}", {:style => :compressed}
+    scss_options = {:syntax => :scss}
+    if ENV['RACK_ENV'].eql? 'production'
+      scss_options.merge!({:style => :compressed})
+    end
+
+    scss :"#{params[:sheet]}", scss_options
   end
 
   not_found do

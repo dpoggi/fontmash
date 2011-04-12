@@ -4,7 +4,7 @@ Bundler.require
 
 # Rack configuration
 configure do
-  if ENV['RACK_ENV'] == 'production'
+  if ENV['RACK_ENV'].eql? 'production'
     use Rack::GoogleAnalytics, :tracker => 'UA-22080872-1'
   end
 end
