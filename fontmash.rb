@@ -1,7 +1,7 @@
 # I AM SO COOL I USE CORE-LEVEL MONKEY PATCHES MUAHAHAHAHAHA
 class ::String
   def space?
-    self.split(//).reject {|chr| chr == ' '}.count == 0
+    self.eql? ' '
   end
 end
 
@@ -21,10 +21,13 @@ class FontMash < Sinatra::Base
 
   # Default view, shows the set of common ASCII characters
   get '/' do
-    @rows = [('A'..'M'), ('N'..'Z'),
-             ('a'..'m'), ('n'..'z'),
+    @rows = [('A'..'M'),
+             ('N'..'Z'),
+             ('a'..'m'),
+             ('n'..'z'),
              ('0'..'9'),
-             ('!'..'-'), ('.'..'/').to_a + (':'..'@').to_a]
+             ('!'..'-'),
+             ('.'..'/').to_a + (':'..'@').to_a]
     haml :index
   end
 
@@ -34,6 +37,11 @@ class FontMash < Sinatra::Base
     num_rows = input_array.length / 13 + 1
     @rows = Array.new(num_rows) {Array.new(13) {input_array.shift}}
     haml :index
+  end
+
+  # Get an SCSS stylesheet
+  get '/stylesheets/:sheet.css' do
+    scss :"#{params[:sheet]}", {:style => :compressed}
   end
 
   not_found do
