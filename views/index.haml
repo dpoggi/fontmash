@@ -1,6 +1,43 @@
-- ["first", "second"].each do |num|
-  %table{:id => num}
-    - @rows.each do |row|
-      %tr
-        - row.each do |cell|
-          %td>= cell
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}
+
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/stylesheets/screen.css"}
+
+    %script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"}
+
+    %title FontMash
+  %body
+    %h1
+      %a{:href => "/"} FontMash
+    %form{:action => "/", :method => "get"}
+      %p#fields
+        %label{:for => "font1"} Red Font:
+        %input{:type => "text", :name => "font1", :id => "font1", :value => "Helvetica"}
+        %label{:for => "font2"} Blue Font:
+        %input{:type => "text", :name => "font2", :id => "font2", :value => "Times"}
+      %p
+        %input{:type => "button", 
+               :name => "go", 
+               :id => "go", 
+               :value => "Mash!"} 
+        %input{:type => "button",
+               :name => "swap",
+               :id => "swap",
+               :value => "Swap!"}
+             
+    - ["first", "second"].each do |num|
+      %table{:id => num}
+        - @rows.each do |row|
+          %tr
+            - row.each do |cell|
+              %td>= cell
+
+    %form{:action => "/", :method => "post"}
+      %p#text-input
+        %label{:for => "text-field"} Enter Your Own Text:
+        %input{:type => "text", :name => "text-field", :id => "text-field"}
+        %input{:type => "submit", :name => "submit", :id => "submit", :value => "Submit"}
+    
+    %script{:type => "text/javascript", :src => "/javascripts/fontmash.js"}
