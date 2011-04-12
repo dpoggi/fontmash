@@ -49,6 +49,11 @@ class FontMash < Sinatra::Base
     scss :"#{params[:sheet]}", scss_options
   end
 
+  # Get a CoffeeScript
+  get '/javascripts/:script.js' do
+    coffee :"#{params[:script]}"
+  end
+
   not_found do
     redirect '/'
   end
