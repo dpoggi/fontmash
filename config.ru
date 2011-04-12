@@ -1,8 +1,3 @@
-# Rackup file
-
-# Shotgun command-line switches
-#\ -s thin -o 0.0.0.0
-
 # Tell Bundler to require all our gems
 require 'bundler'
 Bundler.require
