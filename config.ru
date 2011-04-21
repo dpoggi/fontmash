@@ -1,6 +1,6 @@
 # Tell Bundler to require all our gems
-require 'bundler'
-Bundler.require
+require 'bundler/setup'
+Bundler.require :default, :"#{ENV['RACK_ENV']}"
 
 # Rack configuration
 configure do
