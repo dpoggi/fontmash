@@ -11,8 +11,6 @@ class FontMash < Sinatra::Base
   # Configure Sinatra
   configure do
     disable :run
-    enable :static
-    set :public, File.join(File.dirname(__FILE__), 'public')
     set :views, File.join(File.dirname(__FILE__), 'views')
 
     # Configure Haml
@@ -41,10 +39,8 @@ class FontMash < Sinatra::Base
 
   # Get an SCSS stylesheet
   get '/stylesheets/:sheet.css' do
-    scss_options = {:syntax => :scss}
-    if ENV['RACK_ENV'].eql? 'production'
-      scss_options.merge!({:style => :compressed})
-    end
+    scss_options = {:syntax => :scss, :load_paths => ['.', './views']}
+    scss_options.merge!({:style => :compressed}) if ENV['RACK_ENV'].eql? 'production'
 
     scss :"#{params[:sheet]}", scss_options
   end
