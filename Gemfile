@@ -1,9 +1,11 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'thin'
-
 gem 'haml'
+gem 'sass'
 gem 'barista'
 
-gem 'rack-google-analytics', :group => :production, :require => 'rack/google-analytics'
+group :production do
+  gem 'thin'
+  gem 'rack-google-analytics', :require => 'rack/google-analytics'
+end

@@ -7,5 +7,5 @@ configure do
   use Rack::GoogleAnalytics, :tracker => 'UA-22080872-1' if ENV['RACK_ENV'].eql? 'production'
 end
 
-require File.join(File.dirname(__FILE__), 'fontmash.rb')
+require './fontmash.rb'
 run FontMash
