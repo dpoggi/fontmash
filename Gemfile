@@ -6,6 +6,6 @@ gem 'sass'
 gem 'barista'
 
 group :production do
-  gem 'thin'
+  gem 'unicorn'
   gem 'rack-google-analytics', :require => 'rack/google-analytics'
 end
