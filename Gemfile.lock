@@ -12,7 +12,7 @@ GEM
       tilt
     kgio (2.9.3)
     libv8 (3.16.14.7)
-    rack (1.6.1)
+    rack (1.6.13)
     rack-protection (1.5.3)
       rack
     raindrops (0.13.0)
